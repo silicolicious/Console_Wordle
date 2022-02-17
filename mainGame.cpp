@@ -27,7 +27,7 @@ int main(){
     bool again = true;
     cout<<"\n\t\tWORDLE"<<endl;
     cout<<"\t\t******"<<endl;
-    cout<<"\tYOU HAVE SIX CHANCES\n\n' ' -> LETTER NOT PRESENT IN WORD\n'X' -> LETTER NOT IN CURRENT POSITION\n'O' -> LETTER IN EXACT POSITION\n\n";
+    cout<<"\tYOU HAVE SIX CHANCES\n\n{ } -> LETTER NOT PRESENT IN WORD\n{X} -> LETTER NOT IN CORRECT SPOT\n{O} -> LETTER IN CORRECT SPOT\n\n";
     int game = 1;
     while(again){
         int RandIndex = rand() % len; 
@@ -48,8 +48,9 @@ int main(){
         cout<<"\n\t\tGAME "<<game++<<endl;
 
         for(int t=1; t<=6; t++){
-            cout<<"\nTRY "<<t<<": ";
+            cout<<"\nGUESS "<<t<<": ";
             cin>>inputString;
+            transform(inputString.begin(), inputString.end(), inputString.begin(), ::tolower);
             while(inputString.length() != 5){
                 cout<<"ERROR: WORD LENGTH NOT 5\nTRY "<<t<<": ";
                 cin>>inputString;
@@ -82,13 +83,13 @@ int main(){
                 if(i!=4) cout<<" ";
             }
             cout<<"|\n\t\t|___________________|";
-            cout<<"\n\n\t\tLETTERS PRESENT IN WORD ->\t ";
+            cout<<"\n\n\t\tLETTERS PRESENT IN WORD\t     ->  ";
             for(char i : present)
                 cout<<i<<" ";
-            cout<<"\n\t\tLETTERS NOT PRESENT IN WORD ->   ";
+            cout<<"\n\t\tLETTERS NOT PRESENT IN WORD  ->  ";
             for(char i : notPresent)
                 cout<<i<<" ";
-            cout<<"\n\t\tLETTERS REMAINING ->\t\t ";
+            cout<<"\n\t\tLETTERS REMAINING TO BE USED ->\t ";
             for(char i : alphabets)
                 cout<<i<<" ";
             cout<<"\n";
@@ -101,10 +102,10 @@ int main(){
         cout<<"\t\tBETTER LUCK NEXT TIME...";
         label:
         char option;
-        cout<<"\n\nWANT TO PLAY AGAIN(Y/N): ";
+        cout<<"\n\nWANT TO PLAY AGAIN?(Y/N): ";
         cin>>option;
         while(option != 'Y' && option != 'N'){
-            cout<<"TYPE Y (OR) N\nWANT TO PLAY AGAIN(Y/N): "; 
+            cout<<"TYPE Y (OR) N\nWANT TO PLAY AGAIN?(Y/N): "; 
             cin>>option;
         }
         if(option == 'N') again = false;
