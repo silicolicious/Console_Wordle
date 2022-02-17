@@ -51,7 +51,7 @@ int main(){
             cin>>inputString;
             transform(inputString.begin(), inputString.end(), inputString.begin(), ::tolower);
             while(inputString.length() != 5){
-                cout<<"ERROR: WORD LENGTH NOT 5\nTRY "<<t<<": ";
+                cout<<"ERROR: WORD LENGTH NOT 5\nGUESS "<<t<<": ";
                 cin>>inputString;
             }
             while(count(words.begin(), words.end(), inputString) == 0 || !(isWord(inputString))){
