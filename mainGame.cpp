@@ -21,7 +21,6 @@ bool isWord(string w){
 }
 
 int main(){
-    cout<<words.size()<<endl;
     srand(time(NULL));
     int len = words.size();
     bool again = true;
